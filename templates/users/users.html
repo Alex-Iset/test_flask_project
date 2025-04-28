@@ -1,0 +1,26 @@
+{% extends "users/main_page.html" %}
+
+{% block title %}Пользователи{% endblock %}
+
+{% block content %}
+{% if messages %}
+  <ul>
+    {% for category, message in messages %}
+      <li class="{{ category }}">{{ message }}</li>
+    {% endfor %}
+  </ul>
+{% endif %}
+<table>
+  {% for user in users %}
+  <tr>
+    <td>
+      {{ user.id }}
+    </td>
+    <td>
+      <a href="{{ url_for('show_user', id=user.id) }}">{{ user.username }}</a>
+    </td>
+  </tr>
+  {% endfor %}
+ </table>
+<a href="{{ url_for('index') }}">На главную страницу</a>
+{% endblock %}

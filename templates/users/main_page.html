@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>{% block title %}Flask проект{% endblock %}</title>
+</head>
+<body>
+{% if not hide_sidebar %}
+<form action="/users" method="get">
+  <input type="search" name="query" value="{{ search }}" />
+  <input type="submit" value="Search" />
+</form>
+<a href="{{ url_for('users_new') }}">Зарегистрироваться</a>
+<div id="sidebar">
+  {% block sidebar %}
+  <ul>
+    <li><a href="{{ url_for('index') }}">Главная страница</a></li>
+    <li><a href="{{ url_for('get_users') }}">Пользователи</a></li>
+  </ul>
+  {% endblock %}
+</div>
+{% endif %}
+<div id="content">
+  {% block content %}{% endblock %}
+</div>
+</body>
+</html>
