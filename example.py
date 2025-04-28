@@ -13,6 +13,7 @@ load_dotenv()
 
 database_url = os.getenv("DATABASE_URL")
 conn = psycopg.connect(database_url)
+conn.autocommit = True
 repo = UserRepository(conn)
 
 app = Flask(__name__)
